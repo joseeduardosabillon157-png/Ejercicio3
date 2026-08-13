@@ -2,17 +2,15 @@ import sqlite3
 import pandas as pd
 import streamlit as st
 
-# ---------------------------------------------------------
-# CONFIGURACIÓN DE PÁGINA Y ESTILOS CSS
-# ---------------------------------------------------------
+
 st.set_page_config(
     page_title="Sistema de Gestión de Inventario",
-    page_icon="📦",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-# Estilos CSS personalizados para darle un toque moderno y pulido
+
 st.markdown(
     """
     <style>
@@ -45,9 +43,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ---------------------------------------------------------
-# BASE DE DATOS
-# ---------------------------------------------------------
+
 DB_NAME = "inventario.db"
 
 
@@ -83,11 +79,10 @@ def get_connection():
 
 init_db()
 
-# ---------------------------------------------------------
-# ENCABEZADO
+
 # ---------------------------------------------------------
 st.markdown(
-    "<h1 class='main-header'>📦 Sistema Inteligente de Inventarios</h1>",
+    "<h1 class='main-header'> Sistema Inteligente de Inventarios</h1>",
     unsafe_allow_html=True,
 )
 st.markdown(
@@ -303,8 +298,8 @@ elif opcion == " Eliminar Registro (Delete)":
         list(prod_dict.keys()),
     )
 
-    st.error("⚠️ Atención: Esta acción no se puede deshacer.")
-    if st.button("🗑️ Confirmar Eliminación", type="primary"):
+    st.error("Atención: Esta acción no se puede deshacer.")
+    if st.button("Confirmar Eliminación", type="primary"):
       conn = get_connection()
       cursor = conn.cursor()
       cursor.execute(
@@ -312,4 +307,4 @@ elif opcion == " Eliminar Registro (Delete)":
       )
       conn.commit()
       conn.close()
-      st.success(f"🗑️ El producto '{prod_eliminar}' fue eliminado.")
+      st.success(f" El producto '{prod_eliminar}' fue eliminado.")
